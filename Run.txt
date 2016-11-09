@@ -1,0 +1,32 @@
+# Boxstarter options
+$Boxstarter.RebootOk=$False # Allow reboots?
+$Boxstarter.NoPassword=$False # Is this a machine with no login password?
+$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
+
+# Set PS Execution Policy to Unrestricted
+Update-ExecutionPolicy Unrestricted -Force
+
+# Enable RemoteDesktop
+Enable-RemoteDesktop
+
+# Set AC Power Sleep Settings to "Never"
+POWERCFG -change -standby-timeout-ac 0
+
+
+# Remove Chocolatey
+cuninst  chocolatey
+
+
+# Install Boxstarter
+cup boxstarter
+
+
+# Install Standard Applications
+cup adwcleaner
+cup ccleaner
+cup malwarebytes
+
+
+
+# Install Chocolatey
+cup chocolatey
